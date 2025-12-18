@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f1a;
+            --card: rgba(255, 255, 255, 0.08);
+            --accent: #ffd400;
+            --text: #eaeaf0;
+            --muted: #9aa0b4;
+            --blur: blur(14px);
+        }
+
+        body.light {
+            --bg: #8CE4FF;
+            /* sky blue */
+            --card: rgba(255, 255, 255, 0.9);
+            /* brighter card */
+            --accent: #FFEB70;
+            /* light yellow */
+            --text: #0b0f1a;
+            --muted: #555;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 20% 20%, #1a1f35, var(--bg));
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background 0.4s, color 0.4s;
+        }
+
+        header {
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+            animation: fadeDown 1s ease;
+        }
+
+        header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            margin-bottom: .5rem;
+        }
+
+        .search-bar {
+            margin: 1rem auto 3rem;
+            max-width: 400px;
+            display: flex;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 999px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--text);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .search-bar input:hover {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .search-bar input:focus {
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            transition: color 0.3s ease;
+        }
+
+        body.light .search-bar input {
+            background: rgba(255, 255, 255, 0.5);
+            color: var(--text);
+        }
+
+        body.light .search-bar input:hover {
+            background: rgba(255, 255, 255, 0.65);
+        }
+
+        body.light .search-bar input:focus {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--text);
+        }
+
+        body.light .search-bar input::placeholder {
+            color: rgba(11, 15, 26, 0.5);
+        }
+
+        .mode-toggle {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            background: var(--accent);
+            color: var(--text);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s, color 0.3s;
+        }
+
+        .mode-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .mode-toggle:active {
+            transform: scale(0.97);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            padding: 0 2rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            justify-content: center;
+        }
+
+        .card {
+            max-width: 360px;
+            width: 100%;
+            background: var(--card);
+            backdrop-filter: blur(14px);
+            border-radius: 22px;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform .4s ease, box-shadow .4s ease, background 0.3s;
+            animation: fadeUp .8s ease forwards;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content {
+            padding: 2.2rem 2rem 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        body.light .card-image::after {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .card-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(11, 15, 26, 0), rgba(11, 15, 26, .2));
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.35);
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: .4px;
+            background: linear-gradient(90deg, var(--text), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transition: width .35s ease;
+        }
+
+        .card:hover h3::after {
+            width: 100%;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Projects</h1>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search projects..." oninput="filterProjects()">
+        </div>
+        <button class="mode-toggle" onclick="toggleMode()">🌙 / ☀️</button>
+    </header>
+
+    <main>
+        <section class="grid" id="projects">
+        </section>
+    </main>
+
+    <footer>
+        GitHub Pages
+    </footer>
+
+    <script>
+        let allProjects = [];
+
+        async function loadProjects() {
+            const response = await fetch('projects.json');
+            const projects = await response.json();
+            allProjects = projects;
+            renderProjects(projects);
+        }
+
+        function renderProjects(projects) {
+            const container = document.getElementById('projects');
+            container.innerHTML = '';
+            projects.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => window.open(p.url, '_blank');
+
+                const img = document.createElement('div');
+                img.className = 'card-image';
+                img.style.backgroundImage = `url('${p.image}')`;
+
+                const content = document.createElement('div');
+                content.className = 'card-content';
+                const title = document.createElement('h3');
+                title.textContent = p.name;
+
+                content.appendChild(title);
+                card.appendChild(img);
+                card.appendChild(content);
+                container.appendChild(card);
+            });
+        }
+
+        function filterProjects() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const filtered = allProjects.filter(p => p.name.toLowerCase().includes(query));
+            renderProjects(filtered);
+        }
+
+        function toggleMode() {
+            document.body.classList.toggle('light');
+        }
+
+        loadProjects();
+    </script>
+</body>
+
+</html>
