@@ -1,5 +1,10 @@
 [
     {
+        "name": "PsychoExp",
+        "url": "https://luka816.github.io/PsychoExp/",
+        "image": "images/psychoexp.png"
+    },
+    {
         "name": "დასკვნის გენერატორი",
         "url": "https://luka816.github.io/NeuroConclusion/",
         "image": "images/NeyroConclusion.png"
