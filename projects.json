@@ -5,6 +5,11 @@
         "image": "images/psychexp.png"
     },
     {
+        "name": "Psycho Quiz",
+        "url": "https://luka816.github.io/PsychoQuiz/",
+        "image": "images/PsychoQuiz.png"
+    },
+    {
         "name": "დასკვნის გენერატორი",
         "url": "https://luka816.github.io/NeuroConclusion/",
         "image": "images/NeyroConclusion.png"
