@@ -5,6 +5,11 @@
         "image": "images/psychexp.png"
     },
     {
+        "name": "Timer",
+        "url": "https://luka816.github.io/Timer/",
+        "image": "images/Timer.png"
+    },
+    {
         "name": "Psycho Quiz",
         "url": "https://luka816.github.io/PsychoQuiz/",
         "image": "images/PsychoQuiz.png"
