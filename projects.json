@@ -1,5 +1,10 @@
 [
     {
+        "name": "PsychoLab - (Reaction Time)",
+        "url": "https://luka816.github.io/PsychoLab/",
+        "image": "images/PsychoLab.png"
+    },
+    {
         "name": "PsychoExp",
         "url": "https://luka816.github.io/PsychoExp/",
         "image": "images/psychexp.png"
