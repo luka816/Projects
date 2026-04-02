@@ -15,6 +15,11 @@
         "image": "images/timer.png"
     },
     {
+        "name": "Statistics",
+        "url": "https://luka816.github.io/Statistics/",
+        "image": "images/Statistics.png"
+    },
+    {
         "name": "Psycho Quiz",
         "url": "https://luka816.github.io/PsychoQuiz/",
         "image": "images/PsychoQuiz.png"
